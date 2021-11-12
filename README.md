@@ -1,12 +1,14 @@
+# dishi
+
+**Designs:**
+https://www.figma.com/file/c01m72ZtFhae9HGqNMefKc/dishi?node-id=0%3A1
+
 **Environment:**
-Node v14.16.0
+Node v16.9.0
 
 IOS: Xcode v12.4
 
 Android: Min SDK version 21
-
-**Package manager:**
-Yarn v1.22
 
 **Infrastructure setup:**
 Follow the guide for React Native CLI https://reactnative.dev/docs/environment-setup
