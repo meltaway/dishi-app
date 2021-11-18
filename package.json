@@ -36,6 +36,7 @@
     "react-native-date-picker": "^3.3.2",
     "react-native-device-info": "^8.3.0",
     "react-native-elements": "^3.3.2",
+    "react-native-fast-image": "^8.5.11",
     "react-native-fbsdk-next": "^4.3.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-get-location": "^2.1.2",

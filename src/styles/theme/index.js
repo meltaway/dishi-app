@@ -50,6 +50,8 @@ const colors = {
   red: '#CF3B3B',
   // focused
   aquaForest: '#66A483',
+  // border
+  mercury: '#E8E8E8',
 };
 
 const theme = {
