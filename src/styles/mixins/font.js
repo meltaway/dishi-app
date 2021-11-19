@@ -13,6 +13,8 @@ const color = ({
   mystic,
   cadetBlue,
   mountainMeadow,
+  seaGreen,
+  mercury,
   theme,
 }) => {
   switch (true) {
@@ -63,6 +65,14 @@ const color = ({
     case mountainMeadow:
       return css`
         color: ${theme.colors.mountainMeadow};
+      `;
+    case seaGreen:
+      return css`
+        color: ${theme.colors.seaGreen};
+      `;
+    case mercury:
+      return css`
+        color: ${theme.colors.mercury};
       `;
     default:
       return css`

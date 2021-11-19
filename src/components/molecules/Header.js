@@ -1,7 +1,7 @@
 import React from 'react';
 // import {func, node} from 'prop-types';
 import {Platform, StatusBar} from 'react-native';
-// import {useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import styled, {css} from 'styled-components/native';
 
 import {Flex, Button, Typography} from './../atoms';
@@ -14,13 +14,13 @@ import {Flex, Button, Typography} from './../atoms';
 // import Done from '@icons/done';
 // import Settings from '@icons/settings';
 // import Menu from '@icons/headerMenu';
-// import Return from '@icons/return';
+import Return from './../../assets/icons/Return.svg';
 // import Search from '@icons/search';
 // import PlusIcon from '@icons/plus.svg';
 // import ThreeDots from '@icons/three-dots.svg';
 
 const CommonHeaderContainer = styled.View`
-  ${({theme, type, withZIndex = true}) => css`
+  ${({theme, type, withZIndex = true, topMargin}) => css`
     background-color: ${theme.colors.lightGreen};
     ${Platform.select({
       ios: 'box-shadow: 0 2px 4px rgba(133, 147, 161, 0.5)',
@@ -32,7 +32,7 @@ const CommonHeaderContainer = styled.View`
       android:
         type === 'fullHeight' ? `${160 - StatusBar.currentHeight}px` : '70px',
     })};
-    margin-top: 20px;
+    ${topMargin && `margin-top: ${topMargin};`}
   `}
 `;
 
@@ -72,49 +72,35 @@ const StickRight = styled(Flex)`
 
 const HomeHeader = ({children}) => {
   return (
-    <CommonHeaderContainer type="fullHeight">
+    <CommonHeaderContainer type="fullHeight" topMargin="20px">
       <Flex>{children}</Flex>
     </CommonHeaderContainer>
   );
 };
 
-// const SubheaderWithReturnBackAndTitle = ({
-//   customOnPress,
-//   headerSign,
-//   isExpanded,
-// }) => {
-//   const navigation = useNavigation();
+const SubheaderWithReturnBackAndTitle = ({customOnPress, headerSign}) => {
+  const navigation = useNavigation();
 
-//   const onPress = () => {
-//     customOnPress ? customOnPress() : navigation.goBack();
-//   };
+  const onPress = () => {
+    customOnPress ? customOnPress() : navigation.goBack();
+  };
 
-//   return (
-//     <Flex
-//       row
-//       itemsCenter
-//       marginTop={Platform.select({
-//         ios: 'xl6',
-//         android: !isExpanded ? 'md' : null,
-//       })}
-//       marginBottom={Platform.select({
-//         ios: null,
-//         android: !isExpanded ? 'md' : null,
-//       })}>
-//       <Flex width="20%" itemsCenter>
-//         <Button.Container onPress={onPress}>
-//           <Return width="32" height="32" />
-//         </Button.Container>
-//       </Flex>
-//       <Flex width="60%" itemsCenter>
-//         <Typography size="xl2" bold numberOfLines={2} align="center">
-//           {headerSign}
-//         </Typography>
-//       </Flex>
-//       <Flex width="20%" />
-//     </Flex>
-//   );
-// };
+  return (
+    <Flex row itemsCenter>
+      <Flex width="20%" itemsCenter>
+        <Button.Container onPress={onPress}>
+          <Return width="32" height="32" />
+        </Button.Container>
+      </Flex>
+      <Flex width="60%" itemsCenter>
+        <Typography size="xl2" bold numberOfLines={2} align="center">
+          {headerSign}
+        </Typography>
+      </Flex>
+      <Flex width="20%" />
+    </Flex>
+  );
+};
 
 // const ThreeItemsHeader = ({
 //   children,
@@ -314,27 +300,24 @@ const HomeHeader = ({children}) => {
 //   );
 // };
 
-// const WithReturnAndSign = ({headerSign, children, onIconPress}) => {
-//   const navigation = useNavigation();
+const WithReturnAndSign = ({headerSign, onIconPress}) => {
+  const navigation = useNavigation();
 
-//   const returnBack = () => {
-//     navigation.goBack();
-//   };
+  const returnBack = () => {
+    navigation.goBack();
+  };
 
-//   return (
-//     <CommonHeaderContainer type="fullHeight">
-//       <Flex column justifyBetween>
-//         <SubheaderWithReturnBackAndTitle
-//           headerSign={headerSign}
-//           customOnPress={onIconPress || returnBack}
-//         />
-//         <Flex marginX="xl" grow={0}>
-//           {children}
-//         </Flex>
-//       </Flex>
-//     </CommonHeaderContainer>
-//   );
-// };
+  return (
+    <CommonHeaderContainer type="fullHeight" topMargin="44px">
+      <Flex row justifyBetween justifyCenter itemsCenter>
+        <SubheaderWithReturnBackAndTitle
+          headerSign={headerSign}
+          customOnPress={onIconPress || returnBack}
+        />
+      </Flex>
+    </CommonHeaderContainer>
+  );
+};
 
 // const WithReturnAndTabs = ({children}) => {
 //   const navigation = useNavigation();
@@ -442,5 +425,6 @@ const HomeHeader = ({children}) => {
 
 const Header = {
   HomeHeader,
+  WithReturnAndSign,
 };
 export default Header;

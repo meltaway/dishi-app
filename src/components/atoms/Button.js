@@ -3,7 +3,15 @@ import {bool, oneOf} from 'prop-types';
 
 import {marginMixin, paddingMixin} from './../../styles/mixins';
 
-const {margin, marginTop, marginRight, marginBottom, marginLeft, marginX, marginY} = marginMixin;
+const {
+  margin,
+  marginTop,
+  marginRight,
+  marginBottom,
+  marginLeft,
+  marginX,
+  marginY,
+} = marginMixin;
 
 const {
   padding,
@@ -32,7 +40,9 @@ const Primary = styled.TouchableOpacity`
     ${paddingLeft}
     ${paddingX}
     ${paddingY}
-    ${width ? ` width: ${width}; ` : `width: ${type === 'fullWidth' ? 100 : 47}%;`}
+    ${width
+      ? ` width: ${width}; `
+      : `width: ${type === 'fullWidth' ? 100 : 47}%;`}
     border-radius: 6px;
     border: none;
     background: ${disabled ? theme.colors.perano : theme.colors.royalBlue};
@@ -62,7 +72,9 @@ const Secondary = styled.TouchableOpacity`
     ${paddingX}
     ${paddingY}
     
-    ${width ? ` width: ${width}; ` : `width: ${type === 'fullWidth' ? 100 : 47}%;`}
+    ${width
+      ? ` width: ${width}; `
+      : `width: ${type === 'fullWidth' ? 100 : 47}%;`}
     border-radius: 6px;
     border: 1px solid ${theme.colors.grey};
     background: white;

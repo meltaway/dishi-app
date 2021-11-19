@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, {css} from 'styled-components/native';
 import {Platform} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 import {Header, RecipeCard} from './../../molecules';
 import {Flex, Typography, Tag, Button} from './../../atoms';
@@ -30,11 +31,19 @@ const ingredients = ['radish', 'pepper'];
 const properties = ['spicy'];
 
 const HomeTabScreen = () => {
+  const navigation = useNavigation();
+
+  const handleNavigateIngredientSelectScreen = () => {
+    navigation.navigate('HomeNavigator', {
+      screen: 'IngredientSelectScreen',
+    });
+  };
+
   return (
     <>
       <Header.HomeHeader>
         <Flex itemsCenter justifyCenter>
-          <Typography white bold size="xl3">
+          <Typography white bold size="xl4">
             dishi
           </Typography>
         </Flex>
@@ -50,7 +59,7 @@ const HomeTabScreen = () => {
           </Typography>
           <Flex row grow={0}>
             <Tag.List tags={ingredients} renderItem={renderTag} grow={0} />
-            <Button.Container>
+            <Button.Container onPress={handleNavigateIngredientSelectScreen}>
               <Add />
             </Button.Container>
           </Flex>

@@ -2,6 +2,10 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {HomeTabScreen} from './../../components/screens/home';
+import {
+  IngredientSelectScreen,
+  IngredientFilterScreen,
+} from './../../components/screens/ingredients';
 
 const HomeStack = createStackNavigator();
 
@@ -13,7 +17,7 @@ const HomeNavigator = () => {
         component={HomeTabScreen}
         options={{headerShown: false}}
       />
-      {/* <HomeStack.Screen
+      <HomeStack.Screen
         name="IngredientSelectScreen"
         component={IngredientSelectScreen}
         options={{headerShown: false}}
@@ -23,7 +27,7 @@ const HomeNavigator = () => {
         component={IngredientFilterScreen}
         options={{headerShown: false}}
       />
-      <HomeStack.Screen
+      {/* <HomeStack.Screen
         name="RecipeFiltersScreen"
         component={RecipeFiltersScreen}
         options={{headerShown: false}}

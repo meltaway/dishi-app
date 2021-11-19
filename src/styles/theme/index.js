@@ -51,7 +51,9 @@ const colors = {
   // focused
   aquaForest: '#66A483',
   // border
-  mercury: '#E8E8E8',
+  mercury: '#CFCFCF',
+  // search
+  wildSand: '#F6F6F6',
 };
 
 const theme = {
