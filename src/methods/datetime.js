@@ -1,49 +1,5 @@
 import dayjs from 'dayjs';
 
-const getRelativeDateTime = timestamp => {
-  if (!timestamp) {
-    return {};
-  }
-
-  const sPerMinute = 60;
-  const sPerHour = sPerMinute * 60;
-  const sPerDay = sPerHour * 24;
-  const sPerWeek = sPerDay * 7;
-  const sPerMonth = sPerDay * 30;
-  const sPerYear = sPerDay * 365;
-
-  const secondsElapsed = Math.round(Date.now() / 1000) - timestamp;
-
-  let quantity, translationKey;
-  if (secondsElapsed < sPerMinute) {
-    quantity = secondsElapsed;
-    translationKey = quantity === 1 ? 'secondAgo' : 'secondsAgo';
-  } else if (secondsElapsed < sPerHour) {
-    quantity = Math.floor(secondsElapsed / sPerMinute);
-    translationKey = quantity === 1 ? 'minuteAgo' : 'minutesAgo';
-  } else if (secondsElapsed < sPerDay) {
-    quantity = Math.floor(secondsElapsed / sPerHour);
-    translationKey = quantity === 1 ? 'hourAgo' : 'hoursAgo';
-  } else if (secondsElapsed < sPerWeek) {
-    quantity = Math.floor(secondsElapsed / sPerDay);
-    translationKey = quantity === 1 ? 'dayAgo' : 'daysAgo';
-  } else if (secondsElapsed < sPerMonth) {
-    quantity = Math.floor(secondsElapsed / sPerWeek);
-    translationKey = quantity === 1 ? 'weekAgo' : 'weeksAgo';
-  } else if (secondsElapsed < sPerYear) {
-    quantity = Math.floor(secondsElapsed / sPerMonth);
-    translationKey = quantity === 1 ? 'monthAgo' : 'monthsAgo';
-  } else {
-    quantity = Math.floor(secondsElapsed / sPerYear);
-    translationKey = quantity === 1 ? 'yearAgo' : 'yearsAgo';
-  }
-
-  return {
-    number: quantity,
-    translationKey: `RelativeDateTime.${translationKey}`,
-  };
-};
-
 const formatTimestampToDateString = timestampInSeconds => {
   const timestampInMilliseconds = timestampInSeconds * 1000;
 
@@ -163,7 +119,6 @@ const getDateTimeWithTimezone = (startTime, curDelta, timeZomeCountry) => {
 export {
   formatSelectedDeadline,
   formatDeadline,
-  getRelativeDateTime,
   formatTimestampToDateString,
   formatTimestampToDateName,
   formatZoneDateToDateName,

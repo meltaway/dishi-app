@@ -4,13 +4,9 @@ import {persistReducer, persistStore} from 'redux-persist';
 
 import {STORE_NAMES} from '@constants';
 
-import {authReducer, authPersistConfig} from './auth/duck';
-import {userReducer, userPersistConfig} from './user/duck';
 import {aboutReducer, aboutPersistConfig} from './about/duck';
 
 const persistedReducersObject = {
-  auth: persistReducer(authPersistConfig, authReducer),
-  user: persistReducer(userPersistConfig, userReducer),
   about: persistReducer(aboutPersistConfig, aboutReducer),
 };
 

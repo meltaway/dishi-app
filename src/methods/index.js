@@ -18,15 +18,8 @@ export {
 } from './common';
 
 export {
-  getBase64ForUploadedImage,
-  resizeImageToDimensions,
-  getImagesSizesForCollage,
-} from './image';
-
-export {
   formatSelectedDeadline,
   formatDeadline,
-  getRelativeDateTime,
   formatTimestampToDateString,
   formatTimestampToDateName,
   formatZoneDateToDateName,

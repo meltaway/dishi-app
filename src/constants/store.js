@@ -22,8 +22,6 @@ const FULFILLED_STATE = {
 
 const STORE_NAMES = {
   ROOT: 'root',
-  AUTH: 'auth',
-  USER: 'user',
   ABOUT: 'about',
 };
 
