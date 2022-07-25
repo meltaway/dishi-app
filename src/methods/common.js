@@ -1,4 +1,4 @@
-import {RESEARCH_FIELDS} from '@constants';
+import {RESEARCH_FIELDS} from './../constants';
 
 const findConstantItemIdByName = (searchedItemProperty, entityName) => {
   let arrayToSearch;

@@ -13,8 +13,6 @@ import useDebounce from './useDebounce';
 
 import usePrevious from './usePrevious';
 
-import useSectionListUtils from './useSectionListUtils';
-
 import useUnsavedChanges from './useUnsavedChanges';
 
 export {
@@ -22,6 +20,5 @@ export {
   useInfiniteScrollWithTabs,
   useDebounce,
   usePrevious,
-  useSectionListUtils,
   useUnsavedChanges,
 };

@@ -1,1 +1,1 @@
-export {getFAQ} from './about/duck';
+export {recipesActions, getRecipesList, getRecipe} from './recipes/duck';

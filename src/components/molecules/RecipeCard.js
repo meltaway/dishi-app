@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 import styled, {css} from 'styled-components/native';
 import {Platform} from 'react-native';
 import FastImage from 'react-native-fast-image';
@@ -25,35 +26,52 @@ const styles = {
   },
 };
 
-const RecipeCard = ({title, properties, rating}) => {
-  const generatePropertiesString = () => {
-    const str = properties.join(', ');
-    return str.charAt(0).toUpperCase() + str.slice(1);
+const RecipeCard = ({recipe, linkToRecipe}) => {
+  const navigation = useNavigation();
+
+  const [rating] = useState((Math.random() * (5.0 - 3.0) + 3.0).toFixed(1));
+
+  const handleNavigateToOneRecipeScreen = () => {
+    navigation.navigate('RecipeNavigator', {
+      screen: 'OneRecipeScreen',
+      params: {
+        title: recipe.label,
+        rating,
+        id: linkToRecipe.match(/(?<=\/)[a-zA-Z0-9]{32}(?=\?)/g),
+      },
+    });
   };
+
   return (
-    <Button.Container>
+    <Button.Container
+      marginBottom="xl4"
+      onPress={handleNavigateToOneRecipeScreen}>
       <CardContainer grow={0}>
         <FastImage
           style={styles.image}
           source={{
-            uri:
-              'https://www.koreanbapsang.com/wp-content/uploads/2019/11/DSC6886.jpg',
+            uri: recipe.image,
             priority: FastImage.priority.normal,
           }}
           resizeMode={FastImage.resizeMode.cover}
         />
-        <Flex column paddingX="xl2" paddingY="lg">
-          <Typography size="lg">{title}</Typography>
-          <Flex marginTop="xs" row justifyBetween>
-            <Typography size="lg" regentGrey numberOfLines={1}>
-              {generatePropertiesString()}
+        <Flex row grow={0} justifyBetween>
+          <Flex column grow={0} paddingX="xl2" paddingY="lg">
+            <Typography size="lg" numberOfLines={1}>
+              {recipe.label}
             </Typography>
-            <Flex row grow={0} itemsCenter>
-              <Typography marginRight="xxs" size="lg">
-                {rating}
-              </Typography>
-              <Star />
-            </Flex>
+            <Typography size="sm" regentGrey marginTop="xxs">
+              {recipe.cuisineType[0].replace(/(^\w{1})|(\s+\w{1})/g, letter =>
+                letter.toUpperCase(),
+              )}{' '}
+              ({recipe.dishType[0]})
+            </Typography>
+          </Flex>
+          <Flex row grow={0} paddingTop="lg" paddingRight="xl2">
+            <Star />
+            <Typography size="md" marginLeft="xxs">
+              {rating}
+            </Typography>
           </Flex>
         </Flex>
       </CardContainer>

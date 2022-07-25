@@ -1,5 +1,3 @@
-const DEV_API_URL = 'https://dishi-backend.herokuapp.com/';
+const API_URL = 'http://127.0.0.1:5000/';
 
-const PROD_API_URL = 'https://dishi-backend.herokuapp.com/';
-
-export {DEV_API_URL, PROD_API_URL};
+export {API_URL};

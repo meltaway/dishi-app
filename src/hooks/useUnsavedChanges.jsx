@@ -2,13 +2,16 @@ import React, {useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
-import {ModalWindow} from '@molecules';
+import {ModalWindow} from './../components/molecules';
 
-const useUnsavedChanges = (hasUserDataInputsChanged) => {
+const useUnsavedChanges = hasUserDataInputsChanged => {
   const navigation = useNavigation();
   const {t} = useTranslation();
 
-  const [hasUnsavedChangesModalVisible, setHasUnsavedChangesModalVisible] = useState(false);
+  const [
+    hasUnsavedChangesModalVisible,
+    setHasUnsavedChangesModalVisible,
+  ] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
 
   useEffect(() => {
@@ -16,14 +19,17 @@ const useUnsavedChanges = (hasUserDataInputsChanged) => {
   }, [hasUserDataInputsChanged]);
 
   useEffect(() => {
-    const closePageListener = navigation.addListener('beforeRemove', async (e) => {
-      if (hasUnsavedChanges) {
-        // Prevent default behavior of leaving the screen
-        e.preventDefault();
-        setHasUnsavedChangesModalVisible(true);
-      }
-      // If we don't have unsaved changes, then we don't need to do anything
-    });
+    const closePageListener = navigation.addListener(
+      'beforeRemove',
+      async e => {
+        if (hasUnsavedChanges) {
+          // Prevent default behavior of leaving the screen
+          e.preventDefault();
+          setHasUnsavedChangesModalVisible(true);
+        }
+        // If we don't have unsaved changes, then we don't need to do anything
+      },
+    );
     return () => closePageListener();
   }, [navigation, hasUnsavedChanges]);
 

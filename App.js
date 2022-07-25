@@ -4,11 +4,11 @@ import React from 'react';
 import {Text, TextInput} from 'react-native';
 
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-// import {Provider} from 'react-redux';
-// import {PersistGate} from 'redux-persist/integration/react';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 import {ThemeProvider} from 'styled-components';
 import {RootNavigator} from './src/navigation';
-// import {store, persistor} from '@store/config';
+import {store, persistor} from './src/store/config';
 
 import theme from './src/styles/theme';
 
@@ -22,15 +22,15 @@ TextInput.defaultProps.allowFontScaling = false;
 
 const App = () => {
   return (
-    // <Provider store={store}>
-    //   <PersistGate loading={null} persistor={persistor}>
-    <SafeAreaProvider>
-      <ThemeProvider theme={theme}>
-        <RootNavigator />
-      </ThemeProvider>
-    </SafeAreaProvider>
-    //   </PersistGate>
-    // </Provider>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider>
+          <ThemeProvider theme={theme}>
+            <RootNavigator />
+          </ThemeProvider>
+        </SafeAreaProvider>
+      </PersistGate>
+    </Provider>
   );
 };
 

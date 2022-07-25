@@ -43,9 +43,9 @@ const Primary = styled.TouchableOpacity`
     ${width
       ? ` width: ${width}; `
       : `width: ${type === 'fullWidth' ? 100 : 47}%;`}
-    border-radius: 6px;
+    border-radius: 50px;
     border: none;
-    background: ${disabled ? theme.colors.perano : theme.colors.royalBlue};
+    background: ${disabled ? theme.colors.pewter : theme.colors.seaGreen};
   `}
 `;
 

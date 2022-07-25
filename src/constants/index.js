@@ -1,10 +1,3 @@
-/*
-  The folder will contain reusable constant values shared among different components
-  Separate file for each entity would be created: constants/api.js, constants/journals.js, etc
-
-  Important: each reusable constant should be named in UPPER_CASE
-*/
-
 export {
   NOOP,
   NOTIFICATION_TIMEOUT_IN_MS_SHORT,
@@ -21,9 +14,11 @@ export {
   COUNTRY_CODES,
 } from './common';
 
-export {ABOUT_ENDPOINTS} from './endpoints';
-
-export {DEV_API_URL, PROD_API_URL} from './api';
+export {
+  RECIPES_ENDPOINTS,
+  SELECT_ENDPOINTS,
+  SAVED_ENDPOINTS,
+} from './endpoints';
 
 export {
   HTTP_STATUSES,
@@ -45,10 +40,6 @@ export {
   GET_MAX_LENGTH_BY_FIELD_TYPE,
   GET_KEYBOARD_TYPE_BY_FIELD_TYPE,
   ANY_FIELD,
-  EMAIL_FIELD,
-  PASSWORD_FIELD,
-  PHONE_NUMBER_FIELD,
-  DOI_FIELD,
   TEXT_FIELD_SHORT,
   TEXT_FIELD_MEDIUM,
   TEXT_FIELD_NORMAL,
@@ -60,9 +51,7 @@ export {
   TEXT_WITH_NUMBERS_FIELD_LONG,
   TEXT_WITH_NUMBERS_FIELD_MEDIUM_LONG,
   TEXT_WITH_NUMBERS_FIELD_MAX_LONG,
-  URL_FIELD,
-  ORCID_FIELD,
   INPUT_TYPES,
 } from './validation';
 
-export {TOKEN_ASYNC_STORAGE_KEY} from './asyncStorage';
+export {API_URL} from './api';

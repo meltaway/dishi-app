@@ -1,3 +1,0 @@
-const TOKEN_ASYNC_STORAGE_KEY = 'token';
-
-export {TOKEN_ASYNC_STORAGE_KEY};

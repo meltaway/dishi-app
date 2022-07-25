@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import BottomTabsNavigator from './BottomTabsNavigator';
 
 import {HomeNavigator} from './tabs';
+import {RecipeNavigator} from './recipes';
 
 const AppStack = createStackNavigator();
 
@@ -27,6 +28,11 @@ const AppNavigator = () => {
               options={{headerShown: false}}
             />
             {/* END INTERNAL BOTTOM TAB NAVIGATORS */}
+            <AppStack.Screen
+              name="RecipeNavigator"
+              component={RecipeNavigator}
+              options={{headerShown: false}}
+            />
           </>
         )}
       </AppStack.Navigator>

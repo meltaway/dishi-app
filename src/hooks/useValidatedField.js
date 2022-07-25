@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-import {GET_REGEXP_BY_FIELD_TYPE} from '@constants';
+import {GET_REGEXP_BY_FIELD_TYPE} from './../constants';
 
 const useValidatedField = (initialValue, fieldType, isRequired = false) => {
   const [fieldValue, setFieldValue] = useState(initialValue);

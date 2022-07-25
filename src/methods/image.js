@@ -1,5 +1,5 @@
 import ImageResizer from 'react-native-image-resizer';
-import {DEFAULT_USER_IMAGE_DIMENSION} from '@constants';
+import {DEFAULT_USER_IMAGE_DIMENSION} from './../constants';
 
 const getBase64ForUploadedImage = image => {
   if (image.mime && image.data) {

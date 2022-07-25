@@ -22,7 +22,10 @@ const FULFILLED_STATE = {
 
 const STORE_NAMES = {
   ROOT: 'root',
-  ABOUT: 'about',
+  RECIPES: 'recipes',
+  SAVED: 'saved',
+  FILTERS: 'filters',
+  SELECT: 'select',
 };
 
 export {

@@ -2,10 +2,13 @@ import React from 'react';
 import {Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import {Typography} from './../components/atoms';
 import {HomeTabScreen} from './../components/screens/home';
 
-import HomeTabIcon from './../assets/images/HomeTabIcon.svg';
-import HomeTabIconFocused from './../assets/images/HomeTabIconFocused.svg';
+import HomeTabIcon from './../assets/images/HomeTabIcon';
+import HomeTabIconFocused from './../assets/images/HomeTabIconFocused';
+import SavedTabIcon from './../assets/images/SavedTabIcon';
+import SavedTabIconFocused from './../assets/images/SavedTabIconFocused';
 
 const BOTTOM_TAB_ICON_SIZE = 30;
 
@@ -43,12 +46,33 @@ const BottomTabsNavigator = () => {
           name="HomeTabScreen"
           component={HomeTabScreen}
           options={{
-            tabBarLabel: ({}) => <></>,
+            tabBarLabel: ({focused}) => (
+              <Typography size="sm" regentGrey={!focused} aquaForest={focused}>
+                Home
+              </Typography>
+            ),
             tabBarIcon: ({focused}) =>
               focused ? (
                 <HomeTabIconFocused {...DEFAULT_ICON_PROPS} />
               ) : (
                 <HomeTabIcon {...DEFAULT_ICON_PROPS} />
+              ),
+          }}
+        />
+        <BottomTabs.Screen
+          name="SavedScreen"
+          component={HomeTabScreen}
+          options={{
+            tabBarLabel: ({focused}) => (
+              <Typography size="sm" regentGrey={!focused} aquaForest={focused}>
+                Saved
+              </Typography>
+            ),
+            tabBarIcon: ({focused}) =>
+              focused ? (
+                <SavedTabIconFocused {...DEFAULT_ICON_PROPS} />
+              ) : (
+                <SavedTabIcon {...DEFAULT_ICON_PROPS} />
               ),
           }}
         />

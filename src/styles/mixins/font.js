@@ -1,21 +1,27 @@
 import {css} from 'styled-components';
 
 const color = ({
+  theme,
   black,
   white,
-  grey,
-  royalBlue,
-  lightGrey,
-  paleSky,
-  red,
-  whiteTransparent,
   regentGrey,
-  mystic,
-  cadetBlue,
-  mountainMeadow,
+  whiteSmoke,
+  darkGreen,
+  green,
+  lightGreen,
+  darkBrown,
+  brown,
+  lightBrown,
+  darkSalmon,
+  salmon,
+  lightSalmon,
+  fireBush,
   seaGreen,
+  pewter,
+  red,
+  aquaForest,
   mercury,
-  theme,
+  wildSand,
 }) => {
   switch (true) {
     case black:
@@ -24,55 +30,19 @@ const color = ({
       `;
     case white:
       return css`
-        color: ${theme.colors.whiteSmoke};
-      `;
-    case grey:
-      return css`
-        color: ${theme.colors.grey};
-      `;
-    case mystic:
-      return css`
-        color: ${theme.colors.mystic};
-      `;
-    case paleSky:
-      return css`
-        color: ${theme.colors.paleSky};
-      `;
-    case royalBlue:
-      return css`
-        color: ${theme.colors.royalBlue};
-      `;
-    case red:
-      return css`
-        color: ${theme.colors.red};
-      `;
-    case whiteTransparent:
-      return css`
-        color: ${theme.colors.whiteTransparent};
+        color: ${theme.colors.white};
       `;
     case regentGrey:
       return css`
         color: ${theme.colors.regentGrey};
       `;
-    case lightGrey:
+    case aquaForest:
       return css`
-        color: ${theme.colors.lightGrey};
+        color: ${theme.colors.aquaForest};
       `;
-    case cadetBlue:
+    case red:
       return css`
-        color: ${theme.colors.cadetBlue};
-      `;
-    case mountainMeadow:
-      return css`
-        color: ${theme.colors.mountainMeadow};
-      `;
-    case seaGreen:
-      return css`
-        color: ${theme.colors.seaGreen};
-      `;
-    case mercury:
-      return css`
-        color: ${theme.colors.mercury};
+        color: ${theme.colors.red};
       `;
     default:
       return css`

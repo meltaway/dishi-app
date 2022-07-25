@@ -1,10 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled, {css} from 'styled-components/native';
-import {Platform} from 'react-native';
+import {Platform, ScrollView, ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {Header, RecipeCard} from './../../molecules';
 import {Flex, Typography, Tag, Button} from './../../atoms';
+
+import {STORE_NAMES} from './../../../constants';
+
+import {getRecipesList} from './../../../store';
+
 import Delete from './../../../assets/icons/Delete.svg';
 import Add from './../../../assets/icons/Add.svg';
 
@@ -27,11 +33,15 @@ const renderTag = text => (
   </>
 );
 
-const ingredients = ['radish', 'pepper'];
-const properties = ['spicy'];
-
 const HomeTabScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+
+  const {recipes, isPending} = useSelector(store => store[STORE_NAMES.RECIPES]);
+
+  useEffect(() => {
+    dispatch(getRecipesList({data: {q: 'chicken'}}));
+  }, [dispatch]);
 
   const handleNavigateIngredientSelectScreen = () => {
     navigation.navigate('HomeNavigator', {
@@ -52,32 +62,21 @@ const HomeTabScreen = () => {
         grow={0}
         paddingX="xl3"
         paddingBottom="xl3"
-        paddingTop="xl4">
-        <Flex grow={0}>
-          <Typography marginBottom="md" size="lg">
-            Ingredients
-          </Typography>
-          <Flex row grow={0}>
-            <Tag.List tags={ingredients} renderItem={renderTag} grow={0} />
-            <Button.Container onPress={handleNavigateIngredientSelectScreen}>
-              <Add />
-            </Button.Container>
-          </Flex>
-        </Flex>
-        <Flex marginTop="sm" grow={0}>
-          <Typography marginBottom="md" size="lg">
-            Dish properties
-          </Typography>
-          <Flex row grow={0}>
-            <Tag.List tags={properties} renderItem={renderTag} grow={0} />
-            <Button.Container>
-              <Add />
-            </Button.Container>
-          </Flex>
-        </Flex>
-      </ParamsContainer>
-      <Flex grow={0} paddingX="xl3" paddingBottom="xl3" paddingTop="xl4">
-        <RecipeCard title="Musaengchae" properties={properties} rating={4.8} />
+        paddingTop="xl4"
+      />
+      <Flex grow={0} paddingX="xl3" paddingTop="xl4">
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {isPending ? (
+            <ActivityIndicator color="#1B3726" />
+          ) : (
+            recipes?.hits?.map(item => (
+              <RecipeCard
+                recipe={item.recipe}
+                linkToRecipe={item._links.self.href}
+              />
+            ))
+          )}
+        </ScrollView>
       </Flex>
     </>
   );

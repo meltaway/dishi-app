@@ -1,5 +1,5 @@
 import React from 'react';
-// import {func, node} from 'prop-types';
+import {node} from 'prop-types';
 import {Platform, StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styled, {css} from 'styled-components/native';
@@ -102,79 +102,82 @@ const SubheaderWithReturnBackAndTitle = ({customOnPress, headerSign}) => {
   );
 };
 
-// const ThreeItemsHeader = ({
-//   children,
-//   rightIcon,
-//   leftIcon,
-//   returnIconCustomAction = null,
-//   onLayout = NOOP,
-//   onSubmit = NOOP,
-// }) => {
-//   const navigation = useNavigation();
+const ThreeItemsHeader = ({
+  children,
+  rightIcon,
+  leftIcon,
+  returnIconCustomAction = null,
+  onLayout = null,
+  onSubmit = null,
+}) => {
+  const navigation = useNavigation();
 
-//   const returnBack = () => {
-//     navigation.goBack();
-//   };
+  const returnBack = () => {
+    navigation.goBack();
+  };
 
-//   const chooseIcon = selectiveIcon => {
-//     switch (selectiveIcon) {
-//       case 'close':
-//         return (
-//           <Button.Container onPress={returnBack}>
-//             <Close width="16" height="16" />
-//           </Button.Container>
-//         );
-//       case 'return':
-//         return (
-//           <Button.Container onPress={returnIconCustomAction || returnBack}>
-//             <Return width="32" height="32" />
-//           </Button.Container>
-//         );
-//       case 'done':
-//         return (
-//           <Button.Container onPress={onSubmit}>
-//             <Done width="24" height="16" />
-//           </Button.Container>
-//         );
-//       case 'settings':
-//         return <Settings width="24" height="24" />;
-//       case 'plus':
-//         return (
-//           <Button.Container onPress={onSubmit}>
-//             <PlusIcon width="16" height="16" />
-//           </Button.Container>
-//         );
-//       case 'threeDots':
-//         return (
-//           <Button.Container onPress={onSubmit}>
-//             <ThreeDots />
-//           </Button.Container>
-//         );
-//       default:
-//         return null;
-//     }
-//   };
+  const chooseIcon = selectiveIcon => {
+    switch (selectiveIcon) {
+      // case 'close':
+      //   return (
+      //     <Button.Container onPress={returnBack}>
+      //       <Close width="16" height="16" />
+      //     </Button.Container>
+      //   );
+      case 'return':
+        return (
+          <Button.Container onPress={returnIconCustomAction || returnBack}>
+            <Return width="32" height="32" />
+          </Button.Container>
+        );
+      // case 'done':
+      //   return (
+      //     <Button.Container onPress={onSubmit}>
+      //       <Done width="24" height="16" />
+      //     </Button.Container>
+      //   );
+      // case 'settings':
+      //   return <Settings width="24" height="24" />;
+      // case 'plus':
+      //   return (
+      //     <Button.Container onPress={onSubmit}>
+      //       <PlusIcon width="16" height="16" />
+      //     </Button.Container>
+      //   );
+      // case 'threeDots':
+      //   return (
+      //     <Button.Container onPress={onSubmit}>
+      //       <ThreeDots />
+      //     </Button.Container>
+      //   );
+      default:
+        return null;
+    }
+  };
 
-//   return (
-//     <CommonHeaderContainer onLayout={onLayout}>
-//       <Flex
-//         row
-//         itemsCenter
-//         paddingTop={Platform.select({ios: 'xl6', android: 'xl2'})}
-//         paddingBottom={Platform.select({ios: null, android: 'xl2'})}>
-//         <Flex width="20%" itemsCenter>
-//           {chooseIcon(leftIcon)}
-//         </Flex>
-//         <Flex width="60%" itemsCenter>
-//           {children}
-//         </Flex>
-//         <Flex width="20%" itemsCenter>
-//           {chooseIcon(rightIcon)}
-//         </Flex>
-//       </Flex>
-//     </CommonHeaderContainer>
-//   );
-// };
+  return (
+    <CommonHeaderContainer
+      onLayout={onLayout}
+      type="fullHeight"
+      topMargin="44px">
+      <Flex
+        row
+        itemsCenter
+        paddingTop={Platform.select({ios: 'xl6', android: 'xl2'})}
+        paddingBottom={Platform.select({ios: null, android: 'xl2'})}>
+        <Flex width="20%" itemsCenter>
+          {chooseIcon(leftIcon)}
+        </Flex>
+        <Flex width="60%" itemsCenter>
+          {children}
+        </Flex>
+        <Flex width="20%" itemsCenter>
+          {chooseIcon(rightIcon)}
+        </Flex>
+      </Flex>
+    </CommonHeaderContainer>
+  );
+};
 
 // const OneItemHeader = () => {
 //   const navigation = useNavigation();
@@ -406,13 +409,13 @@ const WithReturnAndSign = ({headerSign, onIconPress}) => {
 //   );
 // };
 
-// ThreeItemsHeader.propTypes = {
-//   children: node,
-// };
+ThreeItemsHeader.propTypes = {
+  children: node,
+};
 
-// ThreeItemsHeader.defaultProps = {
-//   children: null,
-// };
+ThreeItemsHeader.defaultProps = {
+  children: null,
+};
 
 // WithReturnAndSign.propTypes = {
 //   children: node.isRequired,
@@ -426,5 +429,6 @@ const WithReturnAndSign = ({headerSign, onIconPress}) => {
 const Header = {
   HomeHeader,
   WithReturnAndSign,
+  ThreeItemsHeader,
 };
 export default Header;

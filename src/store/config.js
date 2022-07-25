@@ -2,12 +2,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {configureStore, combineReducers} from '@reduxjs/toolkit';
 import {persistReducer, persistStore} from 'redux-persist';
 
-import {STORE_NAMES} from '@constants';
+import {STORE_NAMES} from './../constants';
 
-import {aboutReducer, aboutPersistConfig} from './about/duck';
+import {recipesReducer, recipesPersistConfig} from './recipes/duck';
 
 const persistedReducersObject = {
-  about: persistReducer(aboutPersistConfig, aboutReducer),
+  recipes: persistReducer(recipesPersistConfig, recipesReducer),
 };
 
 const rootReducer = combineReducers(persistedReducersObject);
